@@ -37,6 +37,12 @@ def MyF_chck_sing_str (str):
         return False
     except ValueError:
         return True
+    try:
+        test_str = float(str)
+        return False
+    except ValueError:
+        return True
+
 
 
 def MyF_chck_2_srt (str1, str2):
