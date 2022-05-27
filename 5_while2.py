@@ -30,7 +30,7 @@ questions_and_answers = [
 ]
 def chck_input(itype, l_message):  # проверка ввода на (Хочу универсальный)
     while True:                                         # запускаю цикл опроса ввода до получения требуемого значения
-        getVal = input(l_message).strip().lower()               # Ввод переменной с удаление пробелов
+        getVal = input(l_message).strip().lower().replace('?', '')               # Ввод переменной с удаление пробелов
         try:                                            # Проверка что  преобразуется в число без ошибки
             getTempVal = int(getVal)
         except ValueError:                              # Проверка на ошибку неверного формата (введены буквы)
@@ -52,7 +52,7 @@ def ask_user(answers_dict):
         questions = chck_input("t", "Чат:>")
         for a in answers_dict:
             if a["q"] == questions:
-                print (a["a"])
+                print (a["a"].capitalize())
 
 if __name__ == "__main__":
     ask_user(questions_and_answers)
