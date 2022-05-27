@@ -53,4 +53,7 @@ def ask_user(answers_dict):
                 print (a["a"].capitalize())                 # собственно ответ
 
 if __name__ == "__main__":
-    ask_user(questions_and_answers)
+    try:
+        ask_user(questions_and_answers)
+    except KeyboardInterrupt:
+        exit("Пока")
