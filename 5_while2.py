@@ -11,9 +11,6 @@
     
 """
 
-from time import sleep
-
-
 questions_and_answers = [
     {"q":"кто ты","a":"а ты как думаешь?"},
     {"q":"чем ты занимаешься","a":"программирую"},
@@ -28,6 +25,7 @@ questions_and_answers = [
     {"q":"где вы находитесь","a":"здесь"},
     {"q":"где ты находимшьтся","a":"тута!"}
 ]
+
 def chck_input(itype, l_message):  # проверка ввода на (Хочу универсальный)
     while True:                                         # запускаю цикл опроса ввода до получения требуемого значения
         getVal = input(l_message).strip().lower().replace('?', '')               # Ввод переменной с удаление пробелов
@@ -35,9 +33,9 @@ def chck_input(itype, l_message):  # проверка ввода на (Хочу 
             getTempVal = int(getVal)
         except ValueError:                              # Проверка на ошибку неверного формата (введены буквы)
             if itype == "t":
-                if getVal == "пока":
-                    exit("Пока")                            # Если требуется текстовая переменная
-                return getVal
+                if getVal == "пока":                    # Ну чтоб завершить чатик
+                    exit("Пока")
+                return getVal                            # Если требуется текстовая переменная
             else:                                           # Если преобразован в число без ошибки
                 if itype == "+":
                     if getTempVal > 0:
@@ -48,11 +46,11 @@ def chck_input(itype, l_message):  # проверка ввода на (Хочу 
         print ("Ошибка ввода")
 
 def ask_user(answers_dict):
-    while True:
+    while True:                                             # В бесконечном фикле опрашиваем ввол
         questions = chck_input("t", "Чат:>")
         for a in answers_dict:
-            if a["q"] == questions:
-                print (a["a"].capitalize())
+            if a["q"] == questions:                         # Если есть в базе отвечаем
+                print (a["a"].capitalize())                 # собственно ответ
 
 if __name__ == "__main__":
     ask_user(questions_and_answers)
